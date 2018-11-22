@@ -22,6 +22,14 @@ export default new Router({
       meta: {
         tilte: '关于'
       }
+    },
+    {
+      path: '/test',
+      component: () => import('../views/Test.js'),
+      name: 'test',
+      meta: {
+        tilte: '测试'
+      }
     }
   ]
 })
