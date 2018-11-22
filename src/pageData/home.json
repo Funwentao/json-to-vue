@@ -25,5 +25,10 @@
     "el-select": {
       "size": "small"
     }
+  },
+  {
+    "el-table": {
+      
+    }
   }
 ]
