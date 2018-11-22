@@ -21,9 +21,9 @@ export default {
   },
   render: function (h) {
     return (
-      <div className="home">
-        <div className="components-content">
-          <el-button type="primary" onClick={() => this.onTest('test1')}>按钮</el-button>
+      <div className="home" >
+        <div className="components-content" style="position:relative">
+          <el-button type="primary" onClick={() => this.onTest('test1')} style="position:absolute;top:50px;left:50px;">按钮</el-button>
           <el-input on-input={(value) => this.sync('input', value)}></el-input>
           <span>{this.input}</span>
         </div>

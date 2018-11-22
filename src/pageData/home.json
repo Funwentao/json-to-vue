@@ -9,14 +9,21 @@
         "left": "100px"
       }
     }
-  },{
+  },
+  {
     "el-input": {
       "size": "small",
       "placeholder": "输入",
       "style": {
-        "top": "100px",
-        "left": "100px"
+        "top": "200px",
+        "left": "100px",
+        "width": "250px"
       }
+    }
+  },
+  {
+    "el-select": {
+      "size": "small"
     }
   }
 ]
