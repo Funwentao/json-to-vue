@@ -1,0 +1,10 @@
+[{
+  "el-input": {
+    "type": "small",
+    "text": "查询",
+    "style": {
+      "top": 100,
+      "left": 100
+    }
+  }
+}]
