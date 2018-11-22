@@ -5,11 +5,12 @@ export default function (json) {
   json.forEach(element => {
     componentName = keys(element)[0]
     template += `<${componentName}`
-    entries(element[componentName]).forEach(([key, value]) => {
+    let tempComponent = element[componentName]
+    entries(tempComponent).forEach(([key, value]) => {
       if (key !== 'text') {
         if (key === 'style') {
           template += ` ${key}="position:absolute;`
-          entries(element[componentName][key]).forEach(([skey, svalue]) => {
+          entries(tempComponent[key]).forEach(([skey, svalue]) => {
             template += `${skey}:${svalue};`
           })
           template += '"'
@@ -18,7 +19,7 @@ export default function (json) {
         }
       }
     })
-    template += `>${element[componentName].text || ''}</${componentName}>`
+    template += `>${tempComponent.text || ''}</${componentName}>`
   })
   template += '</div>'
   return template
