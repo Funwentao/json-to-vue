@@ -12,21 +12,39 @@
       @dragend.native="onDragEnd($event,'input')"></el-input>
     </div>
   </div>
-  <div class="slot-content" ref="content">
-
-  </div>
+  <div class="slot-content" ref="content"></div>
 </div>
 </template>
 <script>
+import { deleteNode, downOnePx, upOnePx } from '../lib/operateNode'
 export default {
   data () {
     return {
       btnName: '按钮',
       startX: 0,
-      startY: 0
+      startY: 0,
+      seletedNode: null
     }
   },
   created () {
+    document.addEventListener('keyup', (e) => {
+      if(this.seletedNode){
+        let {seletedNode} = this
+        let {keyCode} = e
+        console.log(keyCode)
+        switch(keyCode) {
+          case 46: 
+            this.seletedNode = deleteNode(seletedNode)
+            break
+          case 40:
+            downOnePx(seletedNode)
+            break
+          case 38:
+            upOnePx(seletedNode)
+            break
+        }
+      }
+    })
   },
   methods: {
     onDragStart (e) {
@@ -38,9 +56,15 @@ export default {
       let { clientX, pageY } = e
       let { startX, startY } = this
       let newNode = this.$refs[ref].$el.cloneNode(true)
+      this.bindClik(newNode)
       const style1 = 'position: absolute;'
       newNode.style = `${style1}top:${pageY}px;left:${clientX - 250 - startX}px`
       this.$refs.content.appendChild(newNode)
+    },
+    bindClik (el) {
+      el.addEventListener('click', () => {
+        this.seletedNode = el
+      })
     }
   }
 }
