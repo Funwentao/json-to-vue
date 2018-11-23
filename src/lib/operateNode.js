@@ -25,10 +25,15 @@ function deleteNode(e) {
   return null
 }
 
+function addRedBorder(e) {
+  e.style.border = "1px solid red";
+}
+
 export {
   deleteNode,
   downOnePx,
   upOnePx,
   leftOnePx,
-  rightOnePx
+  rightOnePx,
+  addRedBorder
 }

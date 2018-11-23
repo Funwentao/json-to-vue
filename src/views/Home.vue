@@ -21,7 +21,8 @@ import {
   downOnePx,
   upOnePx,
   leftOnePx,
-  rightOnePx
+  rightOnePx,
+  addRedBorder
 } from "../lib/operateNode"
 export default {
   data() {
@@ -37,7 +38,6 @@ export default {
       if (this.seletedNode) {
         let { seletedNode } = this
         let { keyCode } = e
-        console.log(keyCode)
         switch (keyCode) {
           case 46:
             this.seletedNode = deleteNode(seletedNode)
@@ -76,6 +76,7 @@ export default {
     bindClik(el) {
       el.addEventListener("click", () => {
         this.seletedNode = el
+        // addRedBorder(el)
       })
     }
   }
