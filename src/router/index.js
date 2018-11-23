@@ -9,7 +9,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: () => import('../views/Home.js'),
+      component: () => import('../views/Home.vue'),
       name: 'home',
       meta: {
         tilte: '主页'
