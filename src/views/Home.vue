@@ -11,6 +11,11 @@
       @dragstart.native="onDragStart"
       @dragend.native="onDragEnd($event,'input')"></el-input>
     </div>
+    <div class="mt10">
+      <el-table v-model="btnName" ref="table" draggable class="table"
+      @dragstart.native="onDragStart"
+      @dragend.native="onDragEnd($event,'table')"></el-table>
+    </div>
   </div>
   <div class="slot-content" ref="content"></div>
 </div>
@@ -30,11 +35,12 @@ export default {
       btnName: "按钮",
       startX: 0,
       startY: 0,
-      seletedNode: null
+      seletedNode: null,
+      moveFlage: false
     }
   },
   created() {
-    document.addEventListener("keyup", e => {
+    document.addEventListener("keydown", e => {
       if (this.seletedNode) {
         let { seletedNode } = this
         let { keyCode } = e
@@ -57,6 +63,10 @@ export default {
         }
       }
     });
+    document.addEventListener("keyup", e => {
+      this.moveFlage = false
+    });
+    
   },
   methods: {
     onDragStart(e) {
