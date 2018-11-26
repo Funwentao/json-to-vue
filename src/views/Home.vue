@@ -12,12 +12,17 @@
       @dragend.native="onDragEnd($event,'input')"></el-input>
     </div>
     <div class="mt10">
-      <el-table v-model="btnName" ref="table" draggable class="table"
+      <el-table ref="table" draggable class="table"
       @dragstart.native="onDragStart"
       @dragend.native="onDragEnd($event,'table')"></el-table>
     </div>
   </div>
-  <div class="slot-content" ref="content"></div>
+  <div class="slot-content">
+    <div ref="content" class="result-content"></div>
+    <div class="btn-content">
+      <el-button @click="onSubmitComponents" type="primary">提交</el-button>
+    </div>
+  </div>
 </div>
 </template>
 <script>
@@ -88,6 +93,9 @@ export default {
         this.seletedNode = el
         // addRedBorder(el)
       })
+    },
+    onSubmitComponents () {
+      console.log(this.$refs.content.innerHTML)
     }
   }
 }
@@ -121,6 +129,17 @@ body,
     height: 100%;
     position: relative;
     box-sizing: border-box;
+    .result-content{
+      height: 95%;
+      border-bottom: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    .btn-content{
+      height: 5%;
+      text-align: right;
+      padding: 10px 20px 0 0 ;
+      box-sizing: border-box;
+    }
   }
 }
 </style>
